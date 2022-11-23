@@ -12,7 +12,6 @@ function Employee() {
   const [textfiltredchanged, settextfiltredchanged] = useState(false);
   const [filtredDataState, setfiltredDataState] = useState();
 
-
   //   })
 
   const columns = [
@@ -71,17 +70,15 @@ function Employee() {
   let filtredData;
 
   const filtringData = () => {
-
     if (searching.current.value == "") {
       filtredData = data;
       settextfiltredchanged(false);
     } else {
       const arr = data;
 
-      const found = arr.filter((obj) => {
+      const found = data.filter((obj) => {
         return obj.fname.toLowerCase() == searching.current.value.toLowerCase();
       });
-
 
       setfiltredDataState(found);
 

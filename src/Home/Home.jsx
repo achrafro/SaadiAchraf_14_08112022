@@ -9,15 +9,17 @@ import logo from "../img/logo.png";
 import { useSelector, useDispatch } from "react-redux";
 import { AddEmployee } from "../Store/Actions.js";
 import store from "../Store/Store";
-import {verif,verifDate,VerifDropdown} from '../verification'
-import {options,listofStates} from '../Home/DropdownOptions.js'
+import { verif, verifDate, VerifDropdown } from "../verification";
+import { options, listofStates } from "../Home/DropdownOptions.js";
+import { Modal } from "modallib";
 
 function Home() {
   const Dispatch = useDispatch();
   const state = useSelector((state) => state.EmployeeData);
-
+  const [alldataaresetted, setalldataaresetted] = useState("");
   const [startDate, setStartDate] = useState("");
   const [newstartDate, setnewStartDate] = useState("");
+  const [showModal, setshowModal] = useState("yes");
 
   const [BirthDate, setBirthDate] = useState("");
   const [newBirthDate, setnewBirthDate] = useState("");
@@ -33,7 +35,12 @@ function Home() {
   const DateS = useRef(null);
   const Departmentlabel = useRef(null);
   const StateLabel = useRef(null);
-  
+  //  close modal
+  const modalrefre = document.getElementsByClassName("Modal");
+  const btnclose = document.getElementsByClassName("buttonclose");
+  console.log(modalrefre);
+  console.log(btnclose);
+
   const defaultOption = options[0];
   //   handle date change of birth :
   const handleFormDateChangeOfbirth = (value) => {
@@ -85,43 +92,41 @@ function Home() {
       zipcode: ZipCode.current.value,
     };
 
+    verif(firsN, EmployeeData.fname, "First Name");
+    verif(LastN, EmployeeData.lname, "Last Name");
+    verif(City, EmployeeData.city, "City");
+    verif(Street, EmployeeData.street, "street");
+    verif(ZipCode, EmployeeData.zipcode, "Zip Code");
 
+    verifDate(DateB, newBirthDate);
+    verifDate(DateS, newstartDate);
+    VerifDropdown(EmployeeData.departement, Departmentlabel);
+    VerifDropdown(EmployeeData.states, StateLabel);
 
-
-
-
-verif(firsN,EmployeeData.fname,"First Name")
-verif(LastN,EmployeeData.lname,"Last Name")
-verif(City,EmployeeData.city,"City")
-verif(Street,EmployeeData.street,"street")
-verif(ZipCode,EmployeeData.zipcode,"Zip Code")
- 
-verifDate(DateB,newBirthDate)
-verifDate(DateS,newstartDate)
-VerifDropdown(EmployeeData.departement,Departmentlabel)
-VerifDropdown(EmployeeData.states,StateLabel)
-
-if (verif(firsN,EmployeeData.fname,"First Name") &&
-verif(LastN,EmployeeData.lname,"Last Name") &&
-verif(City,EmployeeData.city,"City") &&
-verif(Street,EmployeeData.street,"street") &&
-verif(ZipCode,EmployeeData.zipcode,"Zip Code") &&
-verifDate(DateB,newBirthDate)&&verifDate(DateS,newstartDate) &&
-VerifDropdown(EmployeeData.departement,Departmentlabel) &&
-VerifDropdown(EmployeeData.states,StateLabel)
-) {
-  console.log("true");
-  Dispatch({
-    type: AddEmployee,
-    payload: EmployeeData,
-  });
-}
-else { 
-  console.log("flaseeee");
-}
-
-   
-   };
+    if (
+      verif(firsN, EmployeeData.fname, "First Name") &&
+      verif(LastN, EmployeeData.lname, "Last Name") &&
+      verif(City, EmployeeData.city, "City") &&
+      verif(Street, EmployeeData.street, "street") &&
+      verif(ZipCode, EmployeeData.zipcode, "Zip Code") &&
+      verifDate(DateB, newBirthDate) &&
+      verifDate(DateS, newstartDate) &&
+      VerifDropdown(EmployeeData.departement, Departmentlabel) &&
+      VerifDropdown(EmployeeData.states, StateLabel)
+    ) {
+      console.log("true");
+      Dispatch({
+        type: AddEmployee,
+        payload: EmployeeData,
+      });
+      setalldataaresetted(true);
+      modalrefre[0].style.display = "flex";
+    } else {
+      console.log("flaseeee");
+      setalldataaresetted(false);
+      modalrefre[0].style.display = "none";
+    }
+  };
 
   return (
     <>
@@ -167,24 +172,27 @@ else {
               ref={LastN}
             />
 
-            <label htmlFor="date-of-birth" id="datetimepicker"  ref={DateB}>
+            <label htmlFor="date-of-birth" id="datetimepicker" ref={DateB}>
               Date of Birth
             </label>
             <DatePicker
               selected={BirthDate}
               onChange={handleFormDateChangeOfbirth}
               className="form__input"
-             
             />
 
-            <label htmlFor="start-date"     ref={DateS}> Start Date </label>
+            <label htmlFor="start-date" ref={DateS}>
+              {" "}
+              Start Date{" "}
+            </label>
             <DatePicker
               selected={startDate}
               onChange={handleFormDateChangeOfdateStart}
               className="form__input"
-
             />
-            <label htmlFor="department" ref={Departmentlabel}>Department</label>
+            <label htmlFor="department" ref={Departmentlabel}>
+              Department
+            </label>
 
             <Dropdown
               options={options}
@@ -206,10 +214,6 @@ else {
               <label htmlFor="city">City</label>
               <input className="form__input" id="city" type="text" ref={City} />
 
-            
-               
-                 
-
               <label htmlFor="zip-code">Zip Code</label>
               <input
                 className="form__input"
@@ -219,9 +223,11 @@ else {
                 type="number"
                 ref={ZipCode}
               ></input>
-                            <label htmlFor="state" ref={StateLabel}>State</label>
+              <label htmlFor="state" ref={StateLabel}>
+                State
+              </label>
 
-                <Dropdown
+              <Dropdown
                 options={listofStates}
                 ref={states}
                 placeholder="Select a state"
@@ -233,6 +239,12 @@ else {
             Save
           </button>
         </div>
+        {alldataaresetted && (
+          <>
+            {" "}
+            <Modal> </Modal>
+          </>
+        )}
       </div>
     </>
   );

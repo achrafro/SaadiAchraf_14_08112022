@@ -63,36 +63,34 @@ label {
   color: white;
 }
 .formulaire {
-  display: flex;  
+  display: flex;
   flex-direction: column;
 }
 .form__input {
-     color: #333;
-    font-size: 1.2rem;
-    margin: 0 auto;
-    padding: 0.7rem 2rem;
-    border-radius: 0.2rem;
-    background-color: rgb(255, 255, 255);
-    border: none;
-    width: 90%;
-    display: block;
-    border-bottom: 0.3rem solid transparent;
-    transition: all 0.3s;
+  color: #333;
+  font-size: 1.2rem;
+  margin: 0 auto;
+  padding: 0.7rem 2rem;
+  border-radius: 0.2rem;
+  background-color: rgb(255, 255, 255);
+  border: none;
+  width: 90%;
+  display: block;
+  border-bottom: 0.3rem solid transparent;
+  transition: all 0.3s;
 }
-.buttonsave { 
-    margin-top: 20px;
-    background-color: rgb(4, 170, 109, 0.4);
-    border: none;
-    color: white;
-    padding: 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-    text-decoration: none;
-    border-radius: 8px;
-
-
+.buttonsave {
+  margin-top: 20px;
+  background-color: rgb(4, 170, 109, 0.4);
+  border: none;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  text-decoration: none;
+  border-radius: 8px;
 }

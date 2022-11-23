@@ -1,28 +1,25 @@
 body {
-    font-family: "Inter", sans-serif;
-
+  font-family: "Inter", sans-serif;
 }
 .container {
-    color: white;
+  color: white;
 }
 .form__input_search {
-
-    color: #333;
-    font-size: 1rem;
-    margin: 0 auto;
-    padding: 0.5rem 2rem;
-    border-radius: 0.2rem;
-    background-color: rgb(255, 255, 255);
-    border: none;
-    width: 90%;
-    display: block;
-    border-bottom: 0.3rem solid transparent;
-    transition: all 0.3s;
+  color: #333;
+  font-size: 1rem;
+  margin: 0 auto;
+  padding: 0.5rem 2rem;
+  border-radius: 0.2rem;
+  background-color: rgb(255, 255, 255);
+  border: none;
+  width: 90%;
+  display: block;
+  border-bottom: 0.3rem solid transparent;
+  transition: all 0.3s;
 }
 .search {
-    font-size: 30px;
-    display: flex;
-    align-items: space-around;
-    justify-content: space-around;
- 
- }
+  font-size: 30px;
+  display: flex;
+  align-items: space-around;
+  justify-content: space-around;
+}
