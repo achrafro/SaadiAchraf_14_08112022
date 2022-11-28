@@ -9,6 +9,7 @@
 ### Dependencies :
 
   * [https://www.npmjs.com/package/datatables-plugin-react/v/1.8.1](https://www.npmjs.com/package/datatables-plugin-react/v/1.8.1)
+  * [https://www.npmjs.com/package/react-dropdown](https://www.npmjs.com/package/react-dropdown)
 
 
 ### Installation guide line :
