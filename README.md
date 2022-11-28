@@ -19,7 +19,7 @@
 1. Clone the repo
 
 ```sh
-git clone https://github.com/filoupegase/ktr-msc-ls1.git
+git clone https://github.com/achrafro/SaadiAchraf_14_08112022
 ```
 
 2. Move inside :
