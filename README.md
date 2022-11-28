@@ -10,6 +10,8 @@
 
   * [https://www.npmjs.com/package/datatables-plugin-react/v/1.8.1](https://www.npmjs.com/package/datatables-plugin-react/v/1.8.1)
   * [https://www.npmjs.com/package/react-dropdown](https://www.npmjs.com/package/react-dropdown)
+  * [https://www.npmjs.com/package/options-menu](https://www.npmjs.com/package/options-menu)
+  * [https://www.npmjs.com/package/modallib-by-achraf-saadi](https://www.npmjs.com/package/modallib-by-achraf-saadi)
 
 
 ### Installation guide line :
